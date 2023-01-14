@@ -555,6 +555,10 @@ void split_central_split_run_callback(struct k_work *work) {
             LOG_ERR("Source not connected");
             continue;
         }
+        if (!peripherals[payload_wrapper.source].run_behavior_handle) {
+            LOG_ERR("Run behavior handle not found");
+            continue;
+        }
 
         int err = bt_gatt_write_without_response(
             peripherals[payload_wrapper.source].conn,
