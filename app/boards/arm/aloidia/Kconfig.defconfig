@@ -5,14 +5,10 @@ if BOARD_ALOIDIA_LEFT
 config ZMK_KEYBOARD_NAME
 	default "aloidia"
 
+config ZMK_SPLIT_ROLE_CENTRAL
+	default y
+	
 endif # BOARD_ALOIDIA_LEFT
-
-if BOARD_ALOIDIA_RIGHT
-
-config ZMK_KEYBOARD_NAME
-	default "aloidia rt"
-
-endif # BOARD_ALOIDIA_RIGHT
 
 if BOARD_ALOIDIA_LEFT || BOARD_ALOIDIA_RIGHT
 
@@ -26,14 +22,13 @@ config I2C
 	bool
 	default y
 
-config I2C_0
-	bool
-	default y
-	depends on I2C
-
 config SPI
-	bool
+    bool
+    default y	
+
+config MAX17048
 	default y
+
 
 if USB
 
@@ -57,6 +52,63 @@ config ZMK_BLE
 
 config ZMK_USB
 	default y
+
+# if ZMK_DISPLAY
+
+# config SPI
+# 	default y
+
+# config LS0XX
+# 	default y
+
+# config ZMK_WIDGET_WPM_STATUS
+# 	default y if !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
+
+# config LVGL_BITS_PER_PIXEL
+# 	default 1
+
+# choice LVGL_COLOR_DEPTH
+# 	default LVGL_COLOR_DEPTH_1
+# endchoice
+
+# endif # ZMK_DISPLAY
+
+# config ZMK_DISPLAY
+# 	select LVGL_USE_CONT
+# 	select LVGL_FONT_MONTSERRAT_26
+# 	select LVGL_FONT_MONTSERRAT_20
+# 	select LVGL_FONT_MONTSERRAT_16
+# 	select LVGL_USE_LABEL
+# 	select LVGL_USE_IMG
+
+# choice ZMK_DISPLAY_STATUS_SCREEN
+# 	default ZMK_DISPLAY_STATUS_SCREEN_CUSTOM
+# endchoice
+
+# if ZMK_DISPLAY
+
+# config SPI
+# 	default y
+
+# config IL0323
+# 	bool
+# 	default y
+
+# #config DISPLAY_WOB
+# #	bool "White on Black Display"
+# #	default n
+
+# endif # ZMK_DISPLAY
+
+# menuconfig CUSTOM_WIDGET_BATTERY_STATUS
+# 	bool "custom battery status widget"
+
+# menuconfig CUSTOM_WIDGET_OUTPUT_STATUS
+# 	bool "custom output status widget"
+
+# menuconfig CUSTOM_WIDGET_LAYER_STATUS
+# 	bool "custom layer status widget"
+
 
 endif # BOARD_ALOIDIA_LEFT || BOARD_ALOIDIA_RIGHT
 

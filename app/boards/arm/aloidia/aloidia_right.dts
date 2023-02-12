@@ -1,6 +1,62 @@
 #include "aloidia.dtsi"
 
 /{
+    ext-power {
+            compatible = "zmk,ext-power-generic";
+            label = "EXT_POWER";
+            control-gpios = <&gpio1 10 GPIO_ACTIVE_HIGH>;
+            init-delay-ms = <50>;
+        };
+};
+
+nice_view_spi: &spi1 {
+	compatible = "nordic,nrf-spim";
+	sck-pin = <4>;
+	mosi-pin = <26>;
+	miso-pin = <25>; // unused
+	cs-gpios = <&gpio0 27 GPIO_ACTIVE_HIGH>;
+};
+
+&i2c0 {
+	status = "okay";
+	sda-pin = <11>;
+	scl-pin = <41>;
+
+	fuel_gauge: max17048@36 {
+		compatible = "maxim,max17048";
+		status = "okay";
+		label = "BATTERY";
+		reg = <0x36>;
+	};
+};
+
+// &spi2  {
+// 	status = "okay";
+// 	compatible = "nordic,nrf-spim";
+// 	sck-pin = <26>;
+// 	mosi-pin = <27>;
+//     // unused
+// 	miso-pin = <25>;
+// 	cs-gpios = <&gpio0 4 GPIO_ACTIVE_LOW>;
+
+// 	epd: il0323@0 {
+// 		compatible = "gooddisplay,il0323";
+// 		reg =  <0>;
+// 		label = "DISPLAY";
+// 		width = <80>;
+// 		height = <128>;
+// 		spi-max-frequency = <4000000>;
+// 		dc-gpios = <&gpio0 5 GPIO_ACTIVE_LOW>;
+// 		busy-gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
+// 		reset-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+// 		pwr = [03 00 26 26];
+// 		//softstart = [17 17 17 17];
+// 		cdi = <0xd2>;
+// 		tcon = <0x22>;
+// 	};
+// };
+
+/{
     kscan0: kscan {
             compatible = "zmk,kscan-gpio-matrix";
             label = "KSCAN";
@@ -22,7 +78,7 @@
                 , <&gpio0 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
                 , <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
                 , <&gpio0 30 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-                , <&gpio0 28  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+                , <&gpio0 28 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
                 , <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
                 , <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
                 ;
@@ -31,8 +87,8 @@
     right_encoder_evq: encoder_right_evq {
         compatible = "alps,ec11";
         label = "RIGHT_ENCODER_EVQ";
-        a-gpios = <&gpio0 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&gpio0 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        a-gpios = <&gpio0 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&gpio0 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         resolution = <4>;
     };
 
@@ -41,6 +97,10 @@
         sensors = <&right_encoder_evq>;
     };
 };   
+
+&default_transform {
+		col-offset = <10>;
+	};
 
 
 &right_encoder_evq {
