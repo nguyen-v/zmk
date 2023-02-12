@@ -1,0 +1,15 @@
+file_format: "1"
+id: aloidia
+name: aloidia
+url: https://github.com/nguyen-v/aloidia
+type: board
+arch: arm
+features:
+  - keys
+  - display
+outputs:
+  - usb
+  - ble
+siblings:
+  - aloidia_left
+  - aloidia_right
