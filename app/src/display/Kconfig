@@ -11,6 +11,9 @@ menuconfig ZMK_DISPLAY
 
 if ZMK_DISPLAY
 
+config ZMK_DISPLAY_FLIP
+    bool "Rotate display by 180 degree (ls011b7dh03)"
+
 config ZMK_DISPLAY_BLANK_ON_IDLE
     bool "Blank display on idle"
     default y if SSD1306
