@@ -1,14 +1,17 @@
 # SPDX-License-Identifier: MIT
 
-if BOARD_ALOIDIA_LEFT
+if BOARD_ALOIDIA_DONGLE
 
 config ZMK_KEYBOARD_NAME
-	default "aloidia"
+	default "aloidia dongle"
 
-config ZMK_SPLIT_ROLE_CENTRAL
+config ZMK_SPLIT
+	default y
+
+config ZMK_SPLIT_BLE_ROLE_CENTRAL
 	default y
 	
-endif # BOARD_ALOIDIA_LEFT
+endif # BOARD_ALOIDIA_DONGLE
 
 if BOARD_ALOIDIA_LEFT || BOARD_ALOIDIA_RIGHT
 

@@ -22,13 +22,13 @@
 // ---------------   --------------------------------------------  ---------  ---------      ---------------------------------------------------------
 
 			bindings = <
-	&gresc &kp F1	&kp GRAVE &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6    &kp L      &kp R         &kp N7 &kp N8     &kp N9 &kp   N0 &kp MINUS &kp EQUAL   &kp BSPC    &kp PSCRN
+	&gresc &kp F1	&kp GRAVE &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6    &kp LCTRL  &kp RCTRL   &kp N7 &kp N8     &kp N9 &kp   N0 &kp MINUS &kp EQUAL   &kp BSPC    &kp PSCRN
 	&kp F2 &kp F3	&kp TAB     &kp Q   &kp W   &kp E   &kp R   &kp T      &kp DOWN   &kp DOWN    &kp Z  &kp U  &kp I      &kp O   &kp P  &kp LBKT  &kp RBKT   &kp BSLH &kp DEL
 	&kp F4 &kp F5   &kp CLCK     &kp A   &kp S   &kp D   &kp F   &kp G     &kp RIGHT  &kp RIGHT    &kp H  &kp J  &kp K      &kp L   &kp SEMI  &kp SQT      &kp RET      &kp INS
 	&kp F6 &kp F7   &kp LSHFT      &kp Z   &kp X   &kp C   &kp V   &kp B   &kp LEFT   &kp LEFT       &kp N  &kp M  &kp COMMA &kp DOT     &kp FSLH &kp RSHFT    &kp  UP  &kp HOME
 	&kp F8 &kp F9   &kp LCTRL &kp LGUI &kp LALT &mo 1 &kp SPACE    &mo 2   &kp UP     &kp UP         &mo 3  &kp SPACE       &kp RALT  &mo 1 &kp RCTRL &kp LEFT &kp DOWN &kp RIGHT
 			>;    
-			sensor-bindings = <&inc_dec_kp C_BRIGHTNESS_INC C_BRIGHTNESS_DEC &inc_dec_kp RIGHT LEFT &inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN &inc_dec_kp C_FAST_FORWARD C_REWIND>;
+			sensor-bindings = <&inc_dec_kp C_BRIGHTNESS_INC C_BRIGHTNESS_DEC &inc_dec_kp RIGHT LEFT &inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN &inc_dec_kp DOWN UP>;
 		};
 		lower_layer {
 			label = "BT";
@@ -46,7 +46,7 @@
 	&bt BT_SEL 4 	 &trans   		   &kp LSHFT      &trans  &trans  &trans  &trans  &trans  &trans     &trans         &trans &trans &trans    &trans      &trans   &trans       &trans   			 &trans
 	&ext_power EP_ON &ext_power EP_OFF &kp LCTRL &kp LGUI &kp LALT &trans &kp SPACE   &trans  &trans     &trans         &trans &kp SPACE       &kp RALT &trans &kp RCTRL &trans   &ext_power EP_ON   &ext_power EP_OFF
 			>;    
-			sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN &inc_dec_kp RIGHT LEFT &inc_dec_kp C_BRIGHTNESS_INC C_BRIGHTNESS_DEC &inc_dec_kp C_FAST_FORWARD C_REWIND>;
+			sensor-bindings = <&inc_dec_kp C_BRIGHTNESS_INC C_BRIGHTNESS_DEC &inc_dec_kp RIGHT LEFT &inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN &inc_dec_kp DOWN UP>;
 		};		
 	};
 };

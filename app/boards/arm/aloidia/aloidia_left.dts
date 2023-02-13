@@ -42,6 +42,13 @@ nice_view_spi: &spi1 {
 	};
 };
 
+/ {
+    chosen {
+        // zmk,kscan = &kscan0;
+        zmk,battery = &fuel_gauge;
+    };
+};
+
 // &spi1 {
 //     status = "okay";
 // 	compatible = "nordic,nrf-spim";

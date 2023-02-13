@@ -17,6 +17,8 @@ nice_view_spi: &spi1 {
 	cs-gpios = <&gpio0 27 GPIO_ACTIVE_HIGH>;
 };
 
+
+
 &i2c0 {
 	status = "okay";
 	sda-pin = <11>;
@@ -28,6 +30,13 @@ nice_view_spi: &spi1 {
 		label = "BATTERY";
 		reg = <0x36>;
 	};
+};
+
+/ {
+    chosen {
+        // zmk,kscan = &kscan0;
+        zmk,battery = &fuel_gauge;
+    };
 };
 
 // &spi2  {

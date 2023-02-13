@@ -20,7 +20,7 @@
         zephyr,console = &cdc_acm_uart;
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
-        zmk,battery = &fuel_gauge;
+        // zmk,battery = &fuel_gauge;
         // zephyr,display = &epd;
         // zephyr,display = &memory_display;
     };

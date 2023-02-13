@@ -11,5 +11,6 @@ outputs:
   - usb
   - ble
 siblings:
+  - aloidia_dongle
   - aloidia_left
   - aloidia_right
