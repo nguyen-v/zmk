@@ -13,13 +13,12 @@ config ZMK_SPLIT_BLE_ROLE_CENTRAL
 	
 endif # BOARD_ALOIDIA_DONGLE
 
-if BOARD_ALOIDIA_LEFT || BOARD_ALOIDIA_RIGHT || BOARD_ALOIDIA_DONGLE
+
+
+if BOARD_ALOIDIA_LEFT || BOARD_ALOIDIA_RIGHT
 
 config BOARD
 	default "aloidia"
-
-config ZMK_SPLIT
-	default y
 
 config I2C
 	bool
@@ -32,6 +31,12 @@ config SPI
 config MAX17048
 	default y
 
+endif # BOARD_ALOIDIA_LEFT || BOARD_ALOIDIA_RIGHT
+
+if BOARD_ALOIDIA_LEFT || BOARD_ALOIDIA_RIGHT || BOARD_ALOIDIA_DONGLE
+
+config ZMK_SPLIT
+	default y
 
 if USB
 
@@ -113,6 +118,6 @@ config ZMK_USB
 # 	bool "custom layer status widget"
 
 
-endif # BOARD_ALOIDIA_LEFT || BOARD_ALOIDIA_RIGHT
+endif # BOARD_ALOIDIA_LEFT || BOARD_ALOIDIA_RIGHT || BOARD_ALOIDIA_DONGLE
 
 
