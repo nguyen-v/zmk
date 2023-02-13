@@ -121,6 +121,32 @@
             //     , <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
                 ;
     };
+    // kscan0: kscan {
+    //         compatible = "zmk,kscan-gpio-matrix";
+    //         label = "KSCAN";
+
+    //         diode-direction = "row2col";
+
+    //         row-gpios
+    //             = <&gpio0 3  GPIO_ACTIVE_HIGH>
+    //             , <&gpio1 15 GPIO_ACTIVE_HIGH>
+    //             , <&gpio1 14 GPIO_ACTIVE_HIGH>
+    //             , <&gpio1 13 GPIO_ACTIVE_HIGH>
+    //             , <&gpio1 12 GPIO_ACTIVE_HIGH>
+    //             ;
+    //         col-gpios
+    //             = <&gpio0 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+    //             , <&gpio0 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+    //             , <&gpio0 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+    //             , <&gpio0 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+    //             , <&gpio0 28 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+    //             , <&gpio0 30 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+    //             , <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+    //             , <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+    //             , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+    //             , <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+    //             ;
+    // };
 
     
     dongle_encoder_dummy1: encoder_dongle_dummy1 {
