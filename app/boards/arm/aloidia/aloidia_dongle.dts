@@ -1,13 +1,13 @@
 #include "aloidia.dtsi"
 
-// /{
-//     ext-power {
-//             compatible = "zmk,ext-power-generic";
-//             label = "EXT_POWER";
-//             control-gpios = <&gpio1 2 GPIO_ACTIVE_HIGH>;
-//             init-delay-ms = <50>;
-//         };
-// };
+/{
+    ext-power {
+            compatible = "zmk,ext-power-generic";
+            label = "EXT_POWER";
+            control-gpios = <&gpio0 12 GPIO_ACTIVE_HIGH>;
+            init-delay-ms = <50>;
+        };
+};
 
 // nice_view_spi: &spi1 {
 // 	compatible = "nordic,nrf-spim";
