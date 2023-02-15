@@ -47,6 +47,13 @@ static uint8_t passkey_digit = 0;
 
 #endif /* IS_ENABLED(CONFIG_ZMK_BLE_PASSKEY_ENTRY) */
 
+#if IS_ENABLED(CONFIG_ZMK_ENTER_UF2_ON_START)
+
+#define RST_UF2 0x57
+
+#endif
+
+
 enum advertising_type {
     ZMK_ADV_NONE,
     ZMK_ADV_DIR,
@@ -609,6 +616,11 @@ static int zmk_ble_init(const struct device *_arg) {
             LOG_ERR("Failed to delete setting: %d", err);
         }
     }
+#endif
+
+#if IS_ENABLED(CONFIG_ZMK_ENTER_UF2_ON_START)
+    LOG_WRN("Entering UF2 bootloader");
+    sys_reboot(RST_UF2);
 #endif
 
     bt_conn_cb_register(&conn_callbacks);
