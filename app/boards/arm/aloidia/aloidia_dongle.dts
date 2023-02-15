@@ -1,3 +1,10 @@
+/*
+*
+* Copyright (c) 2023 Vincent Nguyen
+* SPDX-License-Identifier: MIT
+*
+*/
+
 #include "aloidia.dtsi"
 
 /{
@@ -9,91 +16,6 @@
         };
 };
 
-// nice_view_spi: &spi1 {
-// 	compatible = "nordic,nrf-spim";
-// 	sck-pin = <20>;
-// 	mosi-pin = <23>;
-// 	miso-pin = <26>; // unused
-// 	cs-gpios = <&gpio0 22 GPIO_ACTIVE_HIGH>;
-//     // nice_view: ls0xx@0 {
-// 	// 	compatible = "sharp,ls0xx";
-// 	// 	label = "DISPLAY";
-// 	// 	spi-max-frequency = <1000000>;
-// 	// 	reg = <0>;
-// 	// 	width = <160>;
-// 	// 	height = <68>;
-//     //     com-invdir;
-//     //     segment-remap;
-// 	// };
-// };
-
-
-
-// &i2c0 {
-// 	status = "okay";
-// 	sda-pin = <11>;
-// 	scl-pin = <41>;
-
-// 	fuel_gauge: max17048@36 {
-// 		compatible = "maxim,max17048";
-// 		status = "okay";
-// 		label = "BATTERY";
-// 		reg = <0x36>;
-// 	};
-// };
-
-// &spi1 {
-//     status = "okay";
-// 	compatible = "nordic,nrf-spim";
-// 	sck-pin = <20>;
-// 	mosi-pin = <23>;
-// 	miso-pin = <26>; // unused
-// 	cs-gpios = <&gpio0 22 GPIO_ACTIVE_HIGH>;
-
-//     // memory_display: ls011b7dh03@0 {
-// 	// 	compatible = "sharp,ls011b7dh03";
-// 	// 	label = "DISPLAY";
-// 	// 	spi-max-frequency = <1000000>;
-// 	// 	reg = <0>;
-// 	// 	width = <160>;
-// 	// 	height = <68>;
-// 	// };
-//     memory_display: ls0xx@0 {
-// 		compatible = "sharp,ls0xx";
-// 		label = "DISPLAY";
-// 		spi-max-frequency = <1000000>;
-// 		reg = <0>;
-// 		width = <160>;
-// 		height = <68>;
-// 	};
-// };
-
-// &spi2  {
-// 	status = "okay";
-// 	compatible = "nordic,nrf-spim";
-// 	sck-pin = <23>;
-// 	mosi-pin = <22>;
-//     // unused
-// 	miso-pin = <26>;
-// 	cs-gpios = <&gpio0 20 GPIO_ACTIVE_LOW>;
-
-// 	epd: il0323@0 {
-// 		compatible = "gooddisplay,il0323";
-// 		reg =  <0>;
-// 		label = "DISPLAY";
-// 		width = <80>;
-// 		height = <128>;
-// 		spi-max-frequency = <4000000>;
-// 		dc-gpios = <&gpio0 21 GPIO_ACTIVE_LOW>;
-// 		busy-gpios = <&gpio0 17 GPIO_ACTIVE_LOW>;
-// 		reset-gpios = <&gpio0 19 GPIO_ACTIVE_LOW>;
-// 		pwr = [03 00 26 26];
-// 		//softstart = [17 17 17 17];
-// 		cdi = <0xd2>;
-// 		tcon = <0x22>;
-// 	};
-// };
-
 /{
     kscan0: kscan {
             compatible = "zmk,kscan-gpio-matrix";
@@ -103,52 +25,12 @@
 
             row-gpios
                 = <&gpio0 9  GPIO_ACTIVE_HIGH>
-                // , <&gpio1 15 GPIO_ACTIVE_HIGH>
-                // , <&gpio1 14 GPIO_ACTIVE_HIGH>
-                // , <&gpio1 13 GPIO_ACTIVE_HIGH>
-                // , <&gpio1 12 GPIO_ACTIVE_HIGH>
                 ;
             col-gpios
                 = <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            //     , <&gpio0 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            //     , <&gpio0 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            //     , <&gpio0 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            //     , <&gpio0 28 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            //     , <&gpio0 30 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            //     , <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            //     , <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            //     , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            //     , <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
                 ;
     };
-    // kscan0: kscan {
-    //         compatible = "zmk,kscan-gpio-matrix";
-    //         label = "KSCAN";
 
-    //         diode-direction = "row2col";
-
-    //         row-gpios
-    //             = <&gpio0 3  GPIO_ACTIVE_HIGH>
-    //             , <&gpio1 15 GPIO_ACTIVE_HIGH>
-    //             , <&gpio1 14 GPIO_ACTIVE_HIGH>
-    //             , <&gpio1 13 GPIO_ACTIVE_HIGH>
-    //             , <&gpio1 12 GPIO_ACTIVE_HIGH>
-    //             ;
-    //         col-gpios
-    //             = <&gpio0 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-    //             , <&gpio0 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-    //             , <&gpio0 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-    //             , <&gpio0 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-    //             , <&gpio0 28 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-    //             , <&gpio0 30 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-    //             , <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-    //             , <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-    //             , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-    //             , <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-    //             ;
-    // };
-
-    
     dongle_encoder_dummy1: encoder_dongle_dummy1 {
         compatible = "alps,ec11";
         label = "DONGLE_ENCODER_DUMMY1";

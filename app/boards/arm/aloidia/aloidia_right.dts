@@ -1,3 +1,10 @@
+/*
+*
+* Copyright (c) 2023 Vincent Nguyen
+* SPDX-License-Identifier: MIT
+*
+*/
+
 #include "aloidia.dtsi"
 
 /{
@@ -34,36 +41,9 @@ nice_view_spi: &spi1 {
 
 / {
     chosen {
-        // zmk,kscan = &kscan0;
         zmk,battery = &fuel_gauge;
     };
 };
-
-// &spi2  {
-// 	status = "okay";
-// 	compatible = "nordic,nrf-spim";
-// 	sck-pin = <26>;
-// 	mosi-pin = <27>;
-//     // unused
-// 	miso-pin = <25>;
-// 	cs-gpios = <&gpio0 4 GPIO_ACTIVE_LOW>;
-
-// 	epd: il0323@0 {
-// 		compatible = "gooddisplay,il0323";
-// 		reg =  <0>;
-// 		label = "DISPLAY";
-// 		width = <80>;
-// 		height = <128>;
-// 		spi-max-frequency = <4000000>;
-// 		dc-gpios = <&gpio0 5 GPIO_ACTIVE_LOW>;
-// 		busy-gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
-// 		reset-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
-// 		pwr = [03 00 26 26];
-// 		//softstart = [17 17 17 17];
-// 		cdi = <0xd2>;
-// 		tcon = <0x22>;
-// 	};
-// };
 
 /{
     kscan0: kscan {

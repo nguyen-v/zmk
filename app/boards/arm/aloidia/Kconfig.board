@@ -1,4 +1,7 @@
+#
+# Copyright (c) 2023 Vincent Nguyen
 # SPDX-License-Identifier: MIT
+#
 
 config BOARD_ALOIDIA_DONGLE
 	bool "aloidia_dongle"
