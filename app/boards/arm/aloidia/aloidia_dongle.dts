@@ -81,10 +81,10 @@
         b-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
     };
 
-	sensors {
-        compatible = "zmk,keymap-sensors";
-        sensors = <&left_encoder_ec11 &left_encoder_evq &right_encoder_ec11 &right_encoder_evq>;
-    };
+	// sensors {
+    //     compatible = "zmk,keymap-sensors";
+    //     sensors = <&left_encoder_ec11 &left_encoder_evq &right_encoder_ec11 &right_encoder_evq>;
+    // };
 };   
 
 // &dongle_encoder_dummy1 {

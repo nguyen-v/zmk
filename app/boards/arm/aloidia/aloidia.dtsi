@@ -62,6 +62,12 @@ RC(4,0) RC(4,1)	    RC(4,2) RC(4,3) RC(4,4) RC(4,5)    RC(4,6)    RC(4,7)    RC(
         resolution = <4>;
     };
 
+    sensors {
+        compatible = "zmk,keymap-sensors";
+        // sensors = <&left_encoder_ec11 &left_encoder_evq &left_encoder_dummy1 &left_encoder_dummy2>;
+        sensors = <&left_encoder_ec11 &left_encoder_evq &right_encoder_ec11 &right_encoder_evq>;
+    };
+
     leds {
         compatible = "gpio-leds";
         blue_led: led_0 {

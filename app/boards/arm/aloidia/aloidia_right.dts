@@ -124,11 +124,11 @@ nice_view_spi: &spi1 {
         b-gpios = <&gpio0 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
     };
 
-	sensors {
-        compatible = "zmk,keymap-sensors";
-        // sensors = <&right_encoder_dummy1 &right_encoder_dummy2 &right_encoder_ec11 &right_encoder_evq>;
-        sensors = <&left_encoder_ec11 &left_encoder_evq &right_encoder_ec11 &right_encoder_evq>;
-    };
+	// sensors {
+    //     compatible = "zmk,keymap-sensors";
+    //     // sensors = <&right_encoder_dummy1 &right_encoder_dummy2 &right_encoder_ec11 &right_encoder_evq>;
+    //     sensors = <&left_encoder_ec11 &left_encoder_evq &right_encoder_ec11 &right_encoder_evq>;
+    // };
 };   
 
 &default_transform {
