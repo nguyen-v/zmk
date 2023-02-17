@@ -31,57 +31,75 @@
                 ;
     };
 
-    dongle_encoder_dummy1: encoder_dongle_dummy1 {
-        compatible = "alps,ec11";
-        label = "DONGLE_ENCODER_DUMMY1";
-        a-gpios = <&gpio0 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&gpio0 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        resolution = <4>;
+    // dongle_encoder_dummy1: encoder_dongle_dummy1 {
+    //     compatible = "alps,ec11";
+    //     label = "DONGLE_ENCODER_DUMMY1";
+    //     a-gpios = <&gpio0 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    //     b-gpios = <&gpio0 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    //     resolution = <4>;
+    // };
+
+    // dongle_encoder_dummy2: encoder_dongle_dummy2 {
+    //     compatible = "alps,ec11";
+    //     label = "DONGLE_ENCODER_DUMMY2";
+    //     a-gpios = <&gpio0 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    //     b-gpios = <&gpio0 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    //     resolution = <4>;
+    // };
+
+    // dongle_encoder_dummy3: encoder_dongle_dummy3 {
+    //     compatible = "alps,ec11";
+    //     label = "DONGLE_ENCODER_DUMMY3";
+    //     a-gpios = <&gpio0 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    //     b-gpios = <&gpio0 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    //     resolution = <4>;
+    // };
+
+    // dongle_encoder_dummy4: encoder_dongle_dummy4 {
+    //     compatible = "alps,ec11";
+    //     label = "DONGLE_ENCODER_DUMMY4";
+    //     a-gpios = <&gpio0 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    //     b-gpios = <&gpio0 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    //     resolution = <4>;
+    // };
+    left_encoder_ec11: encoder_left_ec11 {
+        a-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
     };
 
-    dongle_encoder_dummy2: encoder_dongle_dummy2 {
-        compatible = "alps,ec11";
-        label = "DONGLE_ENCODER_DUMMY2";
-        a-gpios = <&gpio0 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&gpio0 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        resolution = <4>;
+    left_encoder_evq: encoder_left_evq {
+        a-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    };
+    right_encoder_ec11: encoder_right_ec11 {
+        a-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
     };
 
-    dongle_encoder_dummy3: encoder_dongle_dummy3 {
-        compatible = "alps,ec11";
-        label = "DONGLE_ENCODER_DUMMY3";
-        a-gpios = <&gpio0 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&gpio0 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        resolution = <4>;
-    };
-
-    dongle_encoder_dummy4: encoder_dongle_dummy4 {
-        compatible = "alps,ec11";
-        label = "DONGLE_ENCODER_DUMMY4";
-        a-gpios = <&gpio0 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&gpio0 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        resolution = <4>;
+    right_encoder_evq: encoder_right_evq {
+        a-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
     };
 
 	sensors {
         compatible = "zmk,keymap-sensors";
-        sensors = <&dongle_encoder_dummy1 &dongle_encoder_dummy2 &dongle_encoder_dummy3 &dongle_encoder_dummy4>;
+        sensors = <&left_encoder_ec11 &left_encoder_evq &right_encoder_ec11 &right_encoder_evq>;
     };
 };   
 
-&dongle_encoder_dummy1 {
-	status = "okay";
-};
+// &dongle_encoder_dummy1 {
+// 	status = "okay";
+// };
 
-&dongle_encoder_dummy2 {
-	status = "okay";
-};
+// &dongle_encoder_dummy2 {
+// 	status = "okay";
+// };
 
-&dongle_encoder_dummy3 {
-	status = "okay";
-};
+// &dongle_encoder_dummy3 {
+// 	status = "okay";
+// };
 
-&dongle_encoder_dummy4 {
-	status = "okay";
-};
+// &dongle_encoder_dummy4 {
+// 	status = "okay";
+// };
 

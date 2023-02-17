@@ -73,41 +73,61 @@ nice_view_spi: &spi1 {
                 ;
     };
 
-    right_encoder_dummy1: encoder_right_dummy1 {
-        compatible = "alps,ec11";
-        label = "RIGHT_ENCODER_DUMMY1";
+    // right_encoder_dummy1: encoder_right_dummy1 {
+    //     compatible = "alps,ec11";
+    //     label = "RIGHT_ENCODER_DUMMY1";
+    //     a-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    //     b-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    //     resolution = <4>;
+    // };
+
+    // right_encoder_dummy2: encoder_right_dummy2 {
+    //     compatible = "alps,ec11";
+    //     label = "RIGHT_ENCODER_DUMMY2";
+    //     a-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    //     b-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    //     resolution = <4>;
+    // };
+
+    // right_encoder_ec11: encoder_right_ec11 {
+    //     compatible = "alps,ec11";
+    //     label = "RIGHT_ENCODER_EC11";
+    //     a-gpios = <&gpio1 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    //     b-gpios = <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    //     resolution = <4>;
+    // };
+
+    // right_encoder_evq: encoder_right_evq {
+    //     compatible = "alps,ec11";
+    //     label = "RIGHT_ENCODER_EVQ";
+    //     a-gpios = <&gpio0 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    //     b-gpios = <&gpio0 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    //     resolution = <4>;
+    // };
+
+    left_encoder_ec11: encoder_left_ec11 {
         a-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        resolution = <4>;
     };
 
-    right_encoder_dummy2: encoder_right_dummy2 {
-        compatible = "alps,ec11";
-        label = "RIGHT_ENCODER_DUMMY2";
+    left_encoder_evq: encoder_left_evq {
         a-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        resolution = <4>;
     };
-
     right_encoder_ec11: encoder_right_ec11 {
-        compatible = "alps,ec11";
-        label = "RIGHT_ENCODER_EC11";
         a-gpios = <&gpio1 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        resolution = <4>;
     };
 
     right_encoder_evq: encoder_right_evq {
-        compatible = "alps,ec11";
-        label = "RIGHT_ENCODER_EVQ";
         a-gpios = <&gpio0 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio0 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        resolution = <4>;
     };
 
 	sensors {
         compatible = "zmk,keymap-sensors";
-        sensors = <&right_encoder_dummy1 &right_encoder_dummy2 &right_encoder_ec11 &right_encoder_evq>;
+        // sensors = <&right_encoder_dummy1 &right_encoder_dummy2 &right_encoder_ec11 &right_encoder_evq>;
+        sensors = <&left_encoder_ec11 &left_encoder_evq &right_encoder_ec11 &right_encoder_evq>;
     };
 };   
 
@@ -115,18 +135,18 @@ nice_view_spi: &spi1 {
 		col-offset = <10>;
 	};
 
-&right_encoder_dummy1 {
-	status = "okay";
-};
+// &right_encoder_dummy1 {
+// 	status = "okay";
+// };
 
-&right_encoder_dummy2 {
-	status = "okay";
-};
+// &right_encoder_dummy2 {
+// 	status = "okay";
+// };
 
-&right_encoder_ec11 {
-	status = "okay";
-};
+// &right_encoder_ec11 {
+// 	status = "okay";
+// };
 
-&right_encoder_evq {
-	status = "okay";
-};
+// &right_encoder_evq {
+// 	status = "okay";
+// };
