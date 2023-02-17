@@ -99,38 +99,6 @@ nice_view_spi: &spi1 {
                 ;
     };
 
-    
-    // left_encoder_ec11: encoder_left_ec11 {
-    //     compatible = "alps,ec11";
-    //     label = "LEFT_ENCODER_EC11";
-    //     a-gpios = <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    //     b-gpios = <&gpio0 25 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    //     resolution = <4>;
-    // };
-
-    // left_encoder_evq: encoder_left_evq {
-    //     compatible = "alps,ec11";
-    //     label = "LEFT_ENCODER_EVQ";
-    //     a-gpios = <&gpio0 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    //     b-gpios = <&gpio0 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    //     resolution = <4>;
-    // };
-
-    // left_encoder_dummy1: encoder_left_dummy1 {
-    //     compatible = "alps,ec11";
-    //     label = "LEFT_ENCODER_DUMMY1";
-    //     a-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    //     b-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    //     resolution = <4>;
-    // };
-
-    // left_encoder_dummy2: encoder_left_dummy2 {
-    //     compatible = "alps,ec11";
-    //     label = "LEFT_ENCODER_DUMMY2";
-    //     a-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    //     b-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    //     resolution = <4>;
-    // };
 
     left_encoder_ec11: encoder_left_ec11 {
         a-gpios = <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
@@ -150,27 +118,6 @@ nice_view_spi: &spi1 {
         a-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
     };
-
-	// sensors {
-    //     compatible = "zmk,keymap-sensors";
-    //     // sensors = <&left_encoder_ec11 &left_encoder_evq &left_encoder_dummy1 &left_encoder_dummy2>;
-    //     sensors = <&left_encoder_ec11 &left_encoder_evq &right_encoder_ec11 &right_encoder_evq>;
-    // };
 };   
 
-// &left_encoder_ec11 {
-// 	status = "okay";
-// };
-
-// &left_encoder_evq {
-// 	status = "okay";
-// };
-
-// &left_encoder_dummy1 {
-// 	status = "okay";
-// };
-
-// &left_encoder_dummy2 {
-// 	status = "okay";
-// };
 
