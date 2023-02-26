@@ -16,15 +16,23 @@
         };
 };
 
-nice_view_spi: &spi1 {
+&spi1  {
+	status = "okay";
 	compatible = "nordic,nrf-spim";
 	sck-pin = <20>;
 	mosi-pin = <23>;
 	miso-pin = <26>; // unused
 	cs-gpios = <&gpio0 22 GPIO_ACTIVE_HIGH>;
+
+	memory_display: ls0xx_custom@0 {
+		compatible = "sharp,ls0xx_custom";
+		label = "DISPLAY";
+		spi-max-frequency = <1000000>;
+		reg = <0>;
+		width = <160>;
+		height = <68>;
+	};
 };
-
-
 
 &i2c0 {
 	status = "okay";
@@ -42,34 +50,9 @@ nice_view_spi: &spi1 {
 / {
     chosen {
         zmk,battery = &fuel_gauge;
+        zephyr,display = &memory_display;
     };
 };
-
-// &spi1 {
-//     status = "okay";
-// 	compatible = "nordic,nrf-spim";
-// 	sck-pin = <20>;
-// 	mosi-pin = <23>;
-// 	miso-pin = <26>; // unused
-// 	cs-gpios = <&gpio0 22 GPIO_ACTIVE_HIGH>;
-
-//     // memory_display: ls011b7dh03@0 {
-// 	// 	compatible = "sharp,ls011b7dh03";
-// 	// 	label = "DISPLAY";
-// 	// 	spi-max-frequency = <1000000>;
-// 	// 	reg = <0>;
-// 	// 	width = <160>;
-// 	// 	height = <68>;
-// 	// };
-//     memory_display: ls0xx@0 {
-// 		compatible = "sharp,ls0xx";
-// 		label = "DISPLAY";
-// 		spi-max-frequency = <1000000>;
-// 		reg = <0>;
-// 		width = <160>;
-// 		height = <68>;
-// 	};
-// };
 
 /{
     kscan0: kscan {

@@ -30,7 +30,7 @@ __attribute__((weak)) lv_obj_t *zmk_display_status_screen() { return NULL; }
 
 void display_tick_cb(struct k_work *work) { lv_task_handler(); }
 
-#define TICK_MS 10
+#define TICK_MS 100
 
 K_WORK_DEFINE(display_tick_work, display_tick_cb);
 

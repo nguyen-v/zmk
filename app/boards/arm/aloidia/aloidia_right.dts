@@ -16,12 +16,22 @@
         };
 };
 
-nice_view_spi: &spi1 {
+&spi1  {
+	status = "okay";
 	compatible = "nordic,nrf-spim";
 	sck-pin = <4>;
 	mosi-pin = <26>;
-	miso-pin = <25>; // unused
+	miso-pin = <25>;
 	cs-gpios = <&gpio0 27 GPIO_ACTIVE_HIGH>;
+
+	memory_display: ls0xx_custom@0 {
+		compatible = "sharp,ls0xx_custom";
+		label = "DISPLAY";
+		spi-max-frequency = <1000000>;
+		reg = <0>;
+		width = <160>;
+		height = <68>;
+	};
 };
 
 
@@ -42,6 +52,7 @@ nice_view_spi: &spi1 {
 / {
     chosen {
         zmk,battery = &fuel_gauge;
+        zephyr,display = &memory_display;
     };
 };
 
