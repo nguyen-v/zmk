@@ -9,49 +9,54 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/outputs.h>
 
 / {
-	keymap {
-		compatible = "zmk,keymap";
-		
-		default_layer {
-			label = "aloidia";
-// ---------------   -------------------------------------------   ---------  ---------    -----------------------------------------------------------
-// |  ESC |  F1  |   |  `  |  1  |  2  |  3  |  4  |  5  |  6__|   | LNAVC |  | RNAVC |  __|  7  |  8  |  9  |  0  |  -  |  =  |   BCKSPC   | Print  |
-// |  F2  |  F3  |   | TAB    |  Q  |  W  |  E  |  R  |  T  |_     | LNAVD |  | RNAVD |  |_ Z  |  U  |  I  |  O  |  P  |  [  |  ]  |   \    | Del    |
-// |  F4  |  F5  |   | CAPS    |  A  |  S  |  D  |  F  |  G  |___  | LNAVR |  | RNAVR |   |__H  |  J  |  K  |  L  |  ;  |  '  |    ENTER    | Ins    |
-// |  F6  |  F7  |   | SHIFT      |  Z  |  X  |  C  |  V  |  B  |  | LNAVL |  | RNAVL |      |  N  |  M  |  ,  |  .  |  /  |   SHIFT  |  Up | Home   |
-// |  F8  |  F9  |   | CTL  | WIN |  ALT  |MO(1)|  SPACE  |MO(2)|  | LNAVU |  | RNAVU |      |MO(3)|  SPACE   | ALT |MO(1)| CTL | Left| Down| Right  |
-// ---------------   --------------------------------------------  ---------  ---------      ---------------------------------------------------------
+    keymap {
+        compatible = "zmk,keymap";
 
-				bindings = <
-	&gresc &kp F1	&kp GRAVE &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6    &kp LCTRL  &kp RCTRL   &kp N7 &kp N8     &kp N9 &kp   N0 &kp MINUS &kp EQUAL   &kp BSPC    &kp PSCRN
-	&kp F2 &kp F3	&kp TAB     &kp Q   &kp W   &kp E   &kp R   &kp T      &kp DOWN   &kp DOWN    &kp Z  &kp U  &kp I      &kp O   &kp P  &kp LBKT  &kp RBKT   &kp BSLH &kp DEL
-	&kp F4 &kp F5   &kp CLCK     &kp A   &kp S   &kp D   &kp F   &kp G     &kp RIGHT  &kp RIGHT    &kp H  &kp J  &kp K      &kp L   &kp SEMI  &kp SQT      &kp RET      &kp INS
-	&kp F6 &kp F7   &kp LSHFT      &kp Z   &kp X   &kp C   &kp V   &kp B   &kp LEFT   &kp LEFT       &kp N  &kp M  &kp COMMA &kp DOT     &kp FSLH &kp RSHFT    &kp  UP  &kp HOME
-	&kp F8 &kp F9   &kp LCTRL &kp LGUI &kp LALT &mo 1 &kp SPACE    &mo 2   &kp UP     &kp UP         &mo 3  &kp SPACE       &kp RALT  &mo 1 &kp RCTRL &kp LEFT &kp DOWN &kp RIGHT
-			>;    
-			
-			sensor-bindings = <&inc_dec_kp C_BRIGHTNESS_INC C_BRIGHTNESS_DEC &inc_dec_kp RIGHT LEFT &inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN &inc_dec_kp DOWN UP>;
-		};
-		lower_layer {
-			label = "BT";
-// -----------------   -------------------------------------------   ---------  ---------    ---------------------------------------------------------
-// |  ESC  | BTCLR |   |     |     |     |     |     |     |   __|   |       |  |       |  __|     |     |     |     |     |     |   BCKSPC   |      |
-// |  BT0  | BT1   |   | TAB    |     |     |     |     |     |_     |       |  |       |  |_    |     |     |     |     |  [     ]  |        |      |
-// |  BT2  | BT3   |   | CAPS    |     |     |     |     |     |___  |       |  |       |   |__   |     |     |     |     |     |    ENTER    |      |
-// |  BT4  |       |   | SHIFT      |     |     |     |     |     |  |       |  |       |      |     |     |     |     |     |   SHIFT  |     |      |
-// | EP_ON | EP_OFF|   | CTL  | WIN |  ALT  |     |  SPACE  |     |  |       |  |       |      |     |  SPACE   | ALT |     | CTL |BTCLR|EP_ON|EP_OFF|
-// -----------------   --------------------------------------------  ---------  ---------      -------------------------------------------------------	
-			bindings = <
-	&gresc 			 &bt BT_CLR		   &trans 	  &trans &trans &trans &trans &trans &trans   &trans     &trans        &trans &trans     &trans &trans   &trans    &trans       &kp BSPC    			 &trans
-	&bt BT_SEL 0 	 &bt BT_SEL 3	   &kp TAB     &trans  &trans  &trans  &trans  &trans     &trans     &trans      &trans &trans &trans     &trans  &trans &kp LBKT  &kp RBKT     &trans   			 &trans
-	&bt BT_SEL 1 	 &reset      	   &kp CLCK     &trans  &trans  &trans  &trans  &trans    &trans     &trans       &trans &trans &trans     &trans  &trans    &trans        &kp RET      			 &reset
-	&bt BT_SEL 2 	 &bootloader   	   &kp LSHFT      &trans  &trans  &trans  &trans  &trans  &trans     &trans         &trans &trans &trans    &trans      &trans   &trans         &trans   			 &bootloader
-	&ext_power EP_ON &ext_power EP_OFF &kp LCTRL &kp LGUI &kp LALT &trans &kp SPACE   &trans  &trans     &trans         &trans &kp SPACE       &kp RALT &trans &kp RCTRL &bt BT_CLR &ext_power EP_ON     &ext_power EP_OFF
-			>;    
-			sensor-bindings = <&inc_dec_kp C_BRIGHTNESS_INC C_BRIGHTNESS_DEC &inc_dec_kp RIGHT LEFT &inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN &inc_dec_kp DOWN UP>;
-		};		
-	};
+        default_layer {
+            label = "aloidia";
+
+            // ---------------   -------------------------------------------   ---------  ---------    -----------------------------------------------------------
+            // |  ESC |  F1  |   |  `  |  1  |  2  |  3  |  4  |  5  |  6__|   | LNAVC |  | RNAVC |  __|  7  |  8  |  9  |  0  |  -  |  =  |   BCKSPC   | Print  |
+            // |  F2  |  F3  |   | TAB    |  Q  |  W  |  E  |  R  |  T  |_     | LNAVD |  | RNAVD |  |_ Z  |  U  |  I  |  O  |  P  |  [  |  ]  |   \    | Del    |
+            // |  F4  |  F5  |   | CAPS    |  A  |  S  |  D  |  F  |  G  |___  | LNAVR |  | RNAVR |   |__H  |  J  |  K  |  L  |  ;  |  '  |    ENTER    | Ins    |
+            // |  F6  |  F7  |   | SHIFT      |  Z  |  X  |  C  |  V  |  B  |  | LNAVL |  | RNAVL |      |  N  |  M  |  ,  |  .  |  /  |   SHIFT  |  Up | Home   |
+            // |  F8  |  F9  |   | CTL  | WIN |  ALT  |MO(1)|  SPACE  |MO(2)|  | LNAVU |  | RNAVU |      |MO(3)|  SPACE   | ALT |MO(1)| CTL | Left| Down| Right  |
+            // ---------------   --------------------------------------------  ---------  ---------      ---------------------------------------------------------
+
+            bindings = <
+&gresc  &gresc  &kp GRAVE    &kp N1    &kp N2  &kp N3     &kp N4  &kp N5  &kp N6      &none      &none                                    &kp N7     &kp N8     &kp N9    &kp N0  &kp MINUS  &kp EQUAL    &kp BSPC  &kp C_MUTE
+&kp F1  &kp F2    &kp TAB     &kp Q     &kp W   &kp E      &kp R   &kp T           &kp DOWN   &kp DOWN      &kp Y      &kp U      &kp I    &kp O      &kp P   &kp LBKT  &kp RBKT   &kp BSLH  &kp PSCRN
+&kp F3  &kp F4   &kp CLCK     &kp A     &kp S   &kp D      &kp F   &kp G          &kp RIGHT  &kp RIGHT      &kp H      &kp J      &kp K    &kp L   &kp SEMI    &kp SQT              &kp RET    &kp DEL
+&kp F5  &kp F6  &kp LSHFT     &kp Z     &kp X   &kp C      &kp V   &kp B           &kp LEFT   &kp LEFT      &kp N      &kp M  &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT               &kp UP    &kp INS
+&kp F7  &kp F8  &kp LCTRL  &kp LGUI  &kp LALT   &mo 1  &kp SPACE   &mo 2             &kp UP     &kp UP  &kp SPACE  &kp SPACE   &kp RALT    &mo 1  &kp RCTRL   &kp LEFT             &kp DOWN  &kp RIGHT
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_BRIGHTNESS_INC C_BRIGHTNESS_DEC &inc_dec_kp RIGHT LEFT &inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN &inc_dec_kp DOWN UP>;
+        };
+
+        lower_layer {
+            label = "BT";
+
+            // -----------------   -------------------------------------------   ---------  ---------    ---------------------------------------------------------
+            // |  ESC  | BTCLR |   |     |     |     |     |     |     |   __|   |       |  |       |  __|     |     |     |     |     |     |   BCKSPC   |      |
+            // |  <BT  | BT>   |   | TAB    |     |     |     |     |     |_     |       |  |       |  |_    |     |     |     |     |  [     ]  |        |      |
+            // |  BLE  | RESET |   | CAPS    |     |     |     |     |     |___  |       |  |       |   |__   |     |     |     |     |     |    ENTER    |      |
+            // |  USB  | BOOT  |   | SHIFT      |     |     |     |     |     |  |       |  |       |      |     |     |     |     |     |   SHIFT  |     |      |
+            // | EP_ON | EP_OFF|   | CTL  | WIN |  ALT  |     |  SPACE  |     |  |       |  |       |      |     |  SPACE   | ALT |     | CTL |BTCLR|EP_ON|EP_OFF|
+            // -----------------   --------------------------------------------  ---------  ---------      -------------------------------------------------------	
+
+            bindings = <
+          &gresc         &bt BT_CLR     &trans    &kp F1    &kp F2  &kp F3     &kp F4  &kp F5  &kp F6  &trans  &trans                               &kp F7     &kp F8      &kp F9  &kp F10           &kp F11            &kp F12    &kp BSPC  &trans
+    &bt BT_PRV           &bt BT_NXT    &kp TAB    &trans    &trans  &trans     &trans  &trans          &trans  &trans  &trans     &trans    &trans  &trans     &trans      &trans   &trans            &trans             &trans
+    &out OUT_BLE             &reset   &kp CLCK    &trans    &trans  &trans     &trans  &trans          &trans  &trans  &trans     &trans    &trans  &trans     &trans      &trans                    &kp RET             &reset
+    &out OUT_USB        &bootloader  &kp LSHFT    &trans    &trans  &trans     &trans  &trans          &trans  &trans  &trans     &trans    &trans  &trans     &trans      &trans                     &trans        &bootloader
+&ext_power EP_ON  &ext_power EP_OFF  &kp LCTRL  &kp LGUI  &kp LALT  &trans  &kp SPACE  &trans          &trans  &trans  &trans  &kp SPACE  &kp RALT  &trans  &kp RCTRL  &bt BT_CLR           &ext_power EP_ON  &ext_power EP_OFF
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_BRIGHTNESS_INC C_BRIGHTNESS_DEC &inc_dec_kp RIGHT LEFT &inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN &inc_dec_kp DOWN UP>;
+        };
+    };
 };
-
