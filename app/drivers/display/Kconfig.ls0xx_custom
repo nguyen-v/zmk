@@ -1,0 +1,5 @@
+config LS0XX_CUSTOM
+bool "LS0XX memory display controller driver"
+	depends on SPI
+	help
+	  Enable driver for sharp memory display series LS0XXX7DXXX

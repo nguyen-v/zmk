@@ -1,0 +1,7 @@
+if SHIELD_ALOIDIA_RESET
+
+config ZMK_KEYBOARD_NAME
+	default "ALOIDIA RESET"
+
+endif
+

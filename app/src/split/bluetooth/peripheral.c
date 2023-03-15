@@ -35,6 +35,12 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/ble.h>
 #include <zmk/split/bluetooth/uuid.h>
 
+#if IS_ENABLED(CONFIG_ZMK_ENTER_UF2_ON_START)
+
+#define RST_UF2 0x57
+
+#endif
+
 static const struct bt_data zmk_ble_ad[] = {
     BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
     BT_DATA_BYTES(BT_DATA_UUID16_SOME, 0x0f, 0x18 /* Battery Service */
@@ -116,6 +122,11 @@ static int zmk_peripheral_ble_init(const struct device *_arg) {
     LOG_WRN("Clearing all existing BLE bond information from the keyboard");
 
     bt_unpair(BT_ID_DEFAULT, NULL);
+#endif
+
+#if IS_ENABLED(CONFIG_ZMK_ENTER_UF2_ON_START)
+    LOG_WRN("Entering UF2 bootloader");
+    sys_reboot(RST_UF2);
 #endif
 
     bt_conn_cb_register(&conn_callbacks);

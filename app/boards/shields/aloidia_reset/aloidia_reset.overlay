@@ -1,0 +1,22 @@
+#include <dt-bindings/zmk/matrix_transform.h>
+
+/ {
+	chosen {
+		zmk,kscan = &kscan0;
+	};
+
+    kscan0: kscan {
+            compatible = "zmk,kscan-gpio-matrix";
+            label = "KSCAN";
+
+            diode-direction = "row2col";
+
+            row-gpios
+                = <&gpio0 9  GPIO_ACTIVE_HIGH>
+                ;
+            col-gpios
+                = <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+                ;
+    };
+
+};

@@ -20,9 +20,6 @@
         zephyr,console = &cdc_acm_uart;
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
-        zmk,battery = &fuel_gauge;
-        // zephyr,display = &epd;
-        // zephyr,display = &memory_display;
     };
 
     default_transform: keymap_transform_0 {
@@ -38,6 +35,36 @@ RC(4,0) RC(4,1)	    RC(4,2) RC(4,3) RC(4,4) RC(4,5)    RC(4,6)    RC(4,7)    RC(
         >;
     };
 
+    left_encoder_ec11: encoder_left_ec11 {
+        compatible = "alps,ec11";
+        label = "LEFT_ENCODER_EC11";
+        resolution = <4>;
+    };
+
+    left_encoder_evq: encoder_left_evq {
+        compatible = "alps,ec11";
+        label = "LEFT_ENCODER_EVQ";
+        resolution = <4>;
+    };
+
+    right_encoder_ec11: encoder_right_ec11 {
+        compatible = "alps,ec11";
+        label = "RIGHT_ENCODER_EC11";
+        resolution = <4>;
+    };
+
+    right_encoder_evq: encoder_right_evq {
+        compatible = "alps,ec11";
+        label = "RIGHT_ENCODER_EVQ";
+        resolution = <4>;
+    };
+
+    sensors {
+        compatible = "zmk,keymap-sensors";
+        // sensors = <&left_encoder_ec11 &left_encoder_evq &left_encoder_dummy1 &left_encoder_dummy2>;
+        sensors = <&left_encoder_ec11 &left_encoder_evq &right_encoder_ec11 &right_encoder_evq>;
+    };
+
     leds {
         compatible = "gpio-leds";
         blue_led: led_0 {
@@ -51,7 +78,21 @@ RC(4,0) RC(4,1)	    RC(4,2) RC(4,3) RC(4,4) RC(4,5)    RC(4,6)    RC(4,7)    RC(
     };
 };
 
+&left_encoder_ec11 {
+	status = "okay";
+};
 
+&left_encoder_evq {
+	status = "okay";
+};
+
+&right_encoder_ec11 {
+	status = "okay";
+};
+
+&right_encoder_evq {
+	status = "okay";
+};
 
 
 &adc {

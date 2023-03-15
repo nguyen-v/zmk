@@ -1,3 +1,10 @@
+/*
+*
+* Copyright (c) 2023 Vincent Nguyen
+* SPDX-License-Identifier: MIT
+*
+*/
+
 #include "aloidia.dtsi"
 
 /{
@@ -9,13 +16,25 @@
         };
 };
 
-nice_view_spi: &spi1 {
+&spi1  {
+	status = "okay";
 	compatible = "nordic,nrf-spim";
 	sck-pin = <4>;
 	mosi-pin = <26>;
-	miso-pin = <25>; // unused
+	miso-pin = <25>;
 	cs-gpios = <&gpio0 27 GPIO_ACTIVE_HIGH>;
+
+	memory_display: ls0xx_custom@0 {
+		compatible = "sharp,ls0xx_custom";
+		label = "DISPLAY";
+		spi-max-frequency = <1000000>;
+		reg = <0>;
+		width = <160>;
+		height = <68>;
+	};
 };
+
+
 
 &i2c0 {
 	status = "okay";
@@ -30,31 +49,12 @@ nice_view_spi: &spi1 {
 	};
 };
 
-// &spi2  {
-// 	status = "okay";
-// 	compatible = "nordic,nrf-spim";
-// 	sck-pin = <26>;
-// 	mosi-pin = <27>;
-//     // unused
-// 	miso-pin = <25>;
-// 	cs-gpios = <&gpio0 4 GPIO_ACTIVE_LOW>;
-
-// 	epd: il0323@0 {
-// 		compatible = "gooddisplay,il0323";
-// 		reg =  <0>;
-// 		label = "DISPLAY";
-// 		width = <80>;
-// 		height = <128>;
-// 		spi-max-frequency = <4000000>;
-// 		dc-gpios = <&gpio0 5 GPIO_ACTIVE_LOW>;
-// 		busy-gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
-// 		reset-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
-// 		pwr = [03 00 26 26];
-// 		//softstart = [17 17 17 17];
-// 		cdi = <0xd2>;
-// 		tcon = <0x22>;
-// 	};
-// };
+/ {
+    chosen {
+        zmk,battery = &fuel_gauge;
+        zephyr,display = &memory_display;
+    };
+};
 
 /{
     kscan0: kscan {
@@ -83,61 +83,28 @@ nice_view_spi: &spi1 {
                 , <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
                 ;
     };
-
-    right_encoder_dummy1: encoder_right_dummy1 {
-        compatible = "alps,ec11";
-        label = "RIGHT_ENCODER_DUMMY1";
+    
+    left_encoder_ec11: encoder_left_ec11 {
         a-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        resolution = <4>;
     };
 
-    right_encoder_dummy2: encoder_right_dummy2 {
-        compatible = "alps,ec11";
-        label = "RIGHT_ENCODER_DUMMY2";
+    left_encoder_evq: encoder_left_evq {
         a-gpios = <&gpio1 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        resolution = <4>;
     };
-
     right_encoder_ec11: encoder_right_ec11 {
-        compatible = "alps,ec11";
-        label = "RIGHT_ENCODER_EC11";
         a-gpios = <&gpio1 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        resolution = <4>;
     };
 
     right_encoder_evq: encoder_right_evq {
-        compatible = "alps,ec11";
-        label = "RIGHT_ENCODER_EVQ";
         a-gpios = <&gpio0 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio0 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        resolution = <4>;
     };
 
-	sensors {
-        compatible = "zmk,keymap-sensors";
-        sensors = <&right_encoder_dummy1 &right_encoder_dummy2 &right_encoder_ec11 &right_encoder_evq>;
-    };
 };   
 
 &default_transform {
 		col-offset = <10>;
 	};
-
-&right_encoder_dummy1 {
-	status = "okay";
-};
-
-&right_encoder_dummy2 {
-	status = "okay";
-};
-
-&right_encoder_ec11 {
-	status = "okay";
-};
-
-&right_encoder_evq {
-	status = "okay";
-};
